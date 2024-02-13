@@ -22,7 +22,7 @@ app.listen(PORT, () => {
 
 app.use(
   cors({
-    origin: ["mernserver-084b166fbf29.herokuapp.com"],
+    origin: ["https://mernserver-084b166fbf29.herokuapp.com/"],
     methods: ["GET", "POST", "PUT", "DELETE"],
     credentials: true,
   })
