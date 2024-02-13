@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import { Link, useNavigate } from "react-router-dom";
-import axios from "axios";
+import axiosApi from "../util/axios";
 import { ToastContainer, toast } from "react-toastify";
 
 const Login = () => {
@@ -9,7 +9,9 @@ const Login = () => {
     email: "",
     password: "",
   });
+
   const { email, password } = inputValue;
+
   const handleOnChange = (e) => {
     const { name, value } = e.target;
     setInputValue({
@@ -22,6 +24,7 @@ const Login = () => {
     toast.error(err, {
       position: "bottom-left",
     });
+
   const handleSuccess = (msg) =>
     toast.success(msg, {
       position: "bottom-left",
@@ -30,8 +33,8 @@ const Login = () => {
   const handleSubmit = async (e) => {
     e.preventDefault();
     try {
-      const { data } = await axios.post(
-        "http://localhost:4000/login",
+      const { data } = await axiosApi.post(
+        "/login",
         {
           ...inputValue,
         },

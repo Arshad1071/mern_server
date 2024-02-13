@@ -6,7 +6,7 @@ const cookieParser = require("cookie-parser");
 require("dotenv").config();
 const authRoute = require("./Routes/AuthRoute");
 const employeeRoute = require("./Routes/EmployeeRoute");
-const { MONGO_URL, PORT } = process.env;
+const { MONGO_URL, PORT, REACT_APP_API_URL } = process.env;
 
 mongoose
   .connect(MONGO_URL, {
@@ -22,7 +22,7 @@ app.listen(PORT, () => {
 
 app.use(
   cors({
-    origin: ["http://localhost:3000"],
+    origin: [REACT_APP_API_URL],
     methods: ["GET", "POST", "PUT", "DELETE"],
     credentials: true,
   })
